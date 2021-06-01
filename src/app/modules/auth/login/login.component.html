@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col-md-8 col-xl-6 mx-auto">
+        <form [formGroup]="loginForm" (ngSubmit)="handleLogin()">
+            <div class="card mt-1">
+                <div class="card-header">
+                    <h4>Login</h4>
+                    <div appAlert [error]="errorMessage" *ngIf="errorMessage"></div>
+                    <!-- <div *appRepeater="5; let i">{{i}}</div> -->
+                </div>
+                <div class="card-body">
+                    <div class="form-group form-row">
+                        <label for="username" class="col-md-4 col-form-label"></label>
+                        <div class="col-md-8">
+                            <input type="text" name="username" id="username" placeholder="Enter your email"
+                                class="form-control" formControlName="username">
+                        </div>
+                    </div>
+                    <div class="form-group form-row">
+                        <label for="password" class="col-md-4 col-form-label"></label>
+                        <div class="col-md-8">
+                            <input type="password" name="password" id="password" placeholder="Enter your password"
+                                class="form-control" formControlName="password">
+                        </div>
+                    </div>
+                    <div class="form-group form-row">
+                        <label for="password" class="col-md-4 col-form-label"></label>
+                        <div class="col-md-8">
+                            <button type="button" [routerLink]="['/auth/register']" class="btn btn-warning float-right mb-3 ml-3">Register</button>
+                            <button type="submit" class="btn btn-success float-right mb-3">Login</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

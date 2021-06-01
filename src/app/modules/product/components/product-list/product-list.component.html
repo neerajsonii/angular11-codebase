@@ -1,0 +1,12 @@
+<nav>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a [routerLink]="['/']" routerLinkActive="router-link-active">Home</a></li>
+        <li class="breadcrumb-item active">Products</li>
+    </ol>
+</nav>
+
+<h1>Product List</h1>
+
+<div class="list-group">
+    <a routerLink="/products/{{product.id}}" routerLinkActive="router-link-active"  class="list-group-item list-group-item-action" *ngFor="let product of products | async">{{product.id}} | {{product.name}} |  {{product.price | transformPipe | currency : appConfig.defaultCurrency}} | {{product.isAvailable}}</a>
+  </div>

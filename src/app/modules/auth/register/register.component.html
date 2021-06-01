@@ -1,0 +1,106 @@
+<div class="row">
+    <div class="col-md-8 col-xl-6 mx-auto">
+        <form [formGroup]="registerForm" (ngSubmit)="handleRegister()">
+            <div class="card mt-1">
+                <div class="card-header">
+                    <h4>Register</h4>
+                </div>
+                <div class="card-body">
+                    <div class="form-group form-row">
+                        <label for="firstname" class="col-md-4 col-form-label"></label>
+                        <div class="col-md-8">
+                            <input type="text" name="firstname" id="firstname" placeholder="First name"
+                                class="form-control" formControlName="firstName" [ngClass]="{'is-valid': registerForm.get('firstName').valid 
+                                && (registerForm.get('firstName').dirty || registerForm.get('firstName').touched),
+                            'is-invalid': registerForm.get('firstName').invalid 
+                            && (registerForm.get('firstName').dirty || registerForm.get('firstName').touched)}">
+                            <span class="text-danger" *ngIf="registerForm.get('firstName').invalid 
+                            && (registerForm.get('firstName').dirty || registerForm.get('firstName').touched) && registerForm.get('firstName').errors?.required">First name can't be blank</span>
+                            <span class="text-danger" *ngIf="registerForm.get('firstName').invalid 
+                            && (registerForm.get('firstName').dirty || registerForm.get('firstName').touched) && (registerForm.get('firstName').errors?.minlength || registerForm.get('firstName').errors?.maxlength )">First name should be at least min 2 and max 20 characters</span>
+                        </div>
+                    </div>
+                    <div class="form-group form-row">
+                        <label for="lastname" class="col-md-4 col-form-label"></label>
+                        <div class="col-md-8">
+                            <input type="text" name="lastname" id="lastname" placeholder="Last name"
+                                class="form-control" formControlName="lastName" [ngClass]="{'is-valid': registerForm.get('lastName').valid 
+                                && (registerForm.get('lastName').dirty || registerForm.get('lastName').touched),
+                            'is-invalid': registerForm.get('lastName').invalid 
+                            && (registerForm.get('lastName').dirty || registerForm.get('lastName').touched)}">
+                            <span class="text-danger" *ngIf="registerForm.get('lastName').invalid 
+                            && (registerForm.get('lastName').dirty || registerForm.get('lastName').touched) && registerForm.get('lastName').errors?.required">Last name can't be blank</span>
+                            <span class="text-danger" *ngIf="registerForm.get('lastName').invalid 
+                            && (registerForm.get('lastName').dirty || registerForm.get('lastName').touched) && (registerForm.get('lastName').errors?.minlength || registerForm.get('lastName').errors?.maxlength)">Last name should be at least min 2 and max 20 characters</span>
+                        </div>
+                    </div>
+                    <div class="form-group form-row">
+                        <label for="email" class="col-md-4 col-form-label"></label>
+                        <div class="col-md-8">
+                            <input type="text" name="email" id="email" placeholder="Email"
+                                class="form-control" formControlName="email">
+                        </div>
+                    </div>
+                    <div class="form-group form-row">
+                        <label for="phone" class="col-md-4 col-form-label"></label>
+                        <div class="col-md-8">
+                            <input type="text" name="phone" id="phone" placeholder="Phone"
+                                class="form-control" formControlName="phone">
+                        </div>
+                    </div>
+                    <div class="form-group form-row" formGroupName="address">
+                        <label for="city" class="col-md-4 col-form-label"></label>
+                        <div class="col-md-8">
+                            <input type="text" name="city" id="city" placeholder="City"
+                                class="form-control" formControlName="city">
+                        </div>
+                    </div>
+                    <div class="form-group form-row" formGroupName="address">
+                        <label for="country" class="col-md-4 col-form-label"></label>
+                        <div class="col-md-8">
+                            <select name="country" id="country" class="form-control" formControlName="countryId">
+                                <option value="null"> Select</option>
+                                <option [value]="country.value" *ngFor="let country of countries">{{country.label}} - ({{country.code}})</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group form-row">
+                        <label for="password" class="col-md-4 col-form-label"></label>
+                        <div class="col-md-8">
+                            <input type="password" name="password" id="password" placeholder="password"
+                                class="form-control" formControlName="password" 
+                                [ngClass]="{'is-valid': registerForm.get('password').valid 
+                                && (registerForm.get('password').dirty || registerForm.get('password').touched),
+                            'is-invalid': registerForm.get('password').invalid 
+                            && (registerForm.get('password').dirty || registerForm.get('password').touched)}">
+                            <span class="text-danger" *ngIf="registerForm.get('password').invalid 
+                            && (registerForm.get('password').dirty || registerForm.get('password').touched) && registerForm.get('password').errors?.required">Password can't be blank</span>
+                        </div>
+                    </div>
+                    <div class="form-group form-row">
+                        <label for="confirmpassword" class="col-md-4 col-form-label"></label>
+                        <div class="col-md-8">
+                            <input type="password" name="confirmpassword" id="confirmpassword" placeholder="Confirm password"
+                                class="form-control" formControlName="confirmPassword"
+                                [ngClass]="{'is-valid': registerForm.get('confirmPassword').valid 
+                                && (registerForm.get('confirmPassword').dirty || registerForm.get('confirmPassword').touched),
+                            'is-invalid': registerForm.get('confirmPassword').invalid 
+                            && (registerForm.get('confirmPassword').dirty || registerForm.get('confirmPassword').touched)}">
+                            <span class="text-danger" *ngIf="registerForm.get('confirmPassword').invalid 
+                            && (registerForm.get('confirmPassword').dirty || registerForm.get('confirmPassword').touched) && registerForm.get('confirmPassword').errors?.required">Confirm Password can't be blank</span>
+                            <span class="text-danger" *ngIf="registerForm.get('confirmPassword').invalid 
+                            && (registerForm.get('confirmPassword').dirty || registerForm.get('confirmPassword').touched) && registerForm.errors?.compareValidator">Confirm Password do not match</span>
+                        </div>
+                    </div>
+                    <div class="form-group form-row">
+                        <label for="password" class="col-md-4 col-form-label"></label>
+                        <div class="col-md-8">
+                            <button type="submit" [disabled]="registerForm.invalid" class="btn btn-success float-right mb-3">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <p>{{registerForm.value | json}}</p>
+    </div>
+</div>

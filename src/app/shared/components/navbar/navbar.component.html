@@ -1,0 +1,15 @@
+<nav class="navbar navbar-expand-sm bg-success navbar-dark">
+    <a class="navbar-brand" href="#">{{appConfig.appName}} <span class="badge badge-pill badge-dark">env: {{environment}}</span></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mynav">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mynav">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item"><a [routerLink]="['/dashboard']" routerLinkActive="router-link-active"  class="nav-link">Dashboard</a></li>
+            <li class="nav-item"><a [routerLink]="['/products']" routerLinkActive="router-link-active"  class="nav-link">Products</a></li>
+            <li class="nav-item"><a [routerLink]="['/my-profile']" routerLinkActive="router-link-active"  class="nav-link">My Profile</a></li>
+        </ul>
+        <div class="nav-item d-flex"><button [routerLink]="['/login']" routerLinkActive="router-link-active" class="btn btn-outline-warning">Login</button></div>
+        <div class="nav-item d-flex ml-2"><button [routerLink]="['/login']" routerLinkActive="router-link-active" class="btn btn-outline-warning">Logout</button></div>
+    </div>
+</nav>

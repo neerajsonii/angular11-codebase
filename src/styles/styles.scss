@@ -1,0 +1,11 @@
+// Include a css reset, normalize.css
+@import 'base/normalize';
+
+// Custom Theme
+@import 'theme/theme';
+
+// Add basic app structural styling
+@import 'base/structure';
+
+// Material Icons
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
